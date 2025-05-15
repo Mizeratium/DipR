@@ -5,8 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AgentPortal.PageApp"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800" 
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+      d:DesignHeight="450" d:DesignWidth="600" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -14,19 +15,19 @@
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <TextBox x:Name="txbSearch" materialDesign:HintAssist.Hint="Поиск" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="550" FontSize="18" Margin="8"/>
-            <ComboBox x:Name="cmbSort" materialDesign:HintAssist.Hint="Сортировать по" Style="{StaticResource MaterialDesignComboBox}" FontSize="18" HorizontalAlignment="Right" Width="220"/>
+            <TextBox x:Name="txbSearch" materialDesign:HintAssist.Hint="Поиск" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" FontSize="18" Margin="8"/>
+            <ComboBox x:Name="cmbSort" materialDesign:HintAssist.Hint="Сортировать по" Style="{StaticResource MaterialDesignComboBox}" FontSize="18" HorizontalAlignment="Right" Width="220" Margin="8"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <ListView x:Name="QueryList" FontSize="14">
+            <ListView x:Name="QueryList" FontSize="14" ItemsSource="{Binding queries}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock materialDesign:HintAssist.Hint="{Binding ID}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                            <TextBlock materialDesign:HintAssist.Hint="{Binding city}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                            <TextBlock materialDesign:HintAssist.Hint="{Binding street}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                            <TextBlock materialDesign:HintAssist.Hint="{Binding house}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                            <TextBlock materialDesign:HintAssist.Hint="{Binding apartment}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                            <TextBlock Text="{Binding ID}"/>
+                            <TextBlock Text="{Binding city}"/>
+                            <TextBlock Text="{Binding street}"/>
+                            <TextBlock Text="{Binding house}"/>
+                            <TextBlock Text="{Binding apartment}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

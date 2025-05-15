@@ -17,15 +17,19 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Имя пользователя" FontSize="20"/>
+            <DockPanel>
+                <TextBlock Text="{Binding surname}" FontSize="20"/>
+                <TextBlock Text="{Binding name}" FontSize="20"/>
+            </DockPanel>
+            <TextBlock Text="{Binding patronymic}" FontSize="20"/>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <!--<Image Width="100" Height="100" HorizontalAlignment="Right" Source=""/>-->
+            <Image Width="100" Height="100" HorizontalAlignment="Right" Source="{Binding image}"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
-            <Button Content="Сменить аватар" Style="{StaticResource MaterialDesignFlatMidBgButton}" Margin="10"/>
-            <Button Content="Сменить пароль" Style="{StaticResource MaterialDesignFlatMidBgButton}" Margin="10"/>
-            <Button Content="Мотивация" Style="{StaticResource MaterialDesignFlatMidBgButton}" Margin="10"/>
+            <Button Content="Сменить аватар" Style="{StaticResource MaterialDesignFlatMidBgButton}" Margin="10" Click="ClEventChangePhoto"/>
+            <Button Content="Сменить пароль" Style="{StaticResource MaterialDesignFlatMidBgButton}" Margin="10" Click="ClEventChangePassword"/>
+            <Button Content="Мотивация" Style="{StaticResource MaterialDesignFlatMidBgButton}" Margin="10" Click="ClEventShowInfo"/>
         </StackPanel>
     </Grid>
 </Page>

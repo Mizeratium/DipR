@@ -1,6 +1,8 @@
-﻿using System;
+﻿using AgentPortal.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,7 +29,29 @@ namespace AgentPortal.PageApp
 
         private void ClEventAuto(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PageApp.AppListPage());
+            try
+            {
+                var _sel = ClassDB.connection.User.Where(z => z.login == txbLogin.Text && z.password == txbPassword.Text).FirstOrDefault();
+                if (_sel != null)
+                {
+                    if (_sel.role_id == 1)
+                    {
+                        NavigationService.Navigate(new PageApp.AppListPage()); //Agent
+                    }
+                    //else if (_sel.role_id == 2)
+                    //{
+                    //    NavigationService.Navigate(new Pages.PageStudent()); //Boss
+                    //}
+                    else
+                    {
+                        MessageBox.Show("Неверный логин или пароль");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

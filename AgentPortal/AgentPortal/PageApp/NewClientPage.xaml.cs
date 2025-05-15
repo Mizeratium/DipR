@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AgentPortal.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,7 +55,14 @@ namespace AgentPortal.PageApp
          
         private void ClEventSave(object sender, RoutedEventArgs e)
         {
-
+            if (txbSurname.Text != "" && txbName.Text != "" && txbPatronymic.Text != "" && txbPhone.Text.Length <13) //Проверка на ввод данных
+            { 
+                Client client = new Client();
+                client.surname = txbSurname.Text;
+                client.name = txbName.Text;
+                client.patronymic = txbPatronymic.Text;
+                client.phone = GetPhoneNumber();
+            }
         }
     }
 }

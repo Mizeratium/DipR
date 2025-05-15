@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:AgentPortal.PageApp"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" FontSize="20"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      >
 
     <Grid>
         <Grid.ColumnDefinitions>
