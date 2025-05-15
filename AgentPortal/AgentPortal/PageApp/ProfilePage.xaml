@@ -1,0 +1,31 @@
+﻿<Page x:Class="AgentPortal.PageApp.ProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AgentPortal.PageApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Имя пользователя" FontSize="20"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <!--<Image Width="100" Height="100" HorizontalAlignment="Right" Source=""/>-->
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
+            <Button Content="Сменить аватар" Style="{StaticResource MaterialDesignFlatMidBgButton}" Margin="10"/>
+            <Button Content="Сменить пароль" Style="{StaticResource MaterialDesignFlatMidBgButton}" Margin="10"/>
+            <Button Content="Мотивация" Style="{StaticResource MaterialDesignFlatMidBgButton}" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Page>
