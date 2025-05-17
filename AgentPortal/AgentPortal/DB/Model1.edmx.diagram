@@ -25,7 +25,6 @@
         <AssociationConnector Association="AgentDBModel.FK_Application_Tariff" ManuallyRouted="false" />
         <AssociationConnector Association="AgentDBModel.FK_User_Role" ManuallyRouted="false" />
         <AssociationConnector Association="AgentDBModel.FK_Tariff_Services" ManuallyRouted="false" />
-        <AssociationConnector Association="AgentDBModel.FK_Employee_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

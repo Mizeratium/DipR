@@ -35,7 +35,8 @@
           <Property Name="patronymic" Type="varchar" MaxLength="50" />
           <Property Name="phone" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
-          <Property Name="image" Type="binary" MaxLength="50" />
+          <Property Name="image" Type="binary" MaxLength="500" />
+          <Property Name="isDelete" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Queries">
           <Key>
@@ -170,15 +171,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employee_User">
+        <Association Name="FK_Employee_User1">
           <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Employee">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="user_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -250,7 +251,7 @@
             <End Role="Queries" EntitySet="Queries" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employee_User" Association="Self.FK_Employee_User">
+          <AssociationSet Name="FK_Employee_User1" Association="Self.FK_Employee_User1">
             <End Role="User" EntitySet="User" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
@@ -303,10 +304,10 @@
           <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
-          <Property Name="image" Type="Binary" MaxLength="50" FixedLength="true" />
+          <Property Name="image" Type="Binary" MaxLength="500" FixedLength="true" />
           <NavigationProperty Name="Queries" Relationship="Self.FK_Application_Person" FromRole="Employee" ToRole="Queries" />
           <NavigationProperty Name="User" Relationship="Self.FK_Person_User" FromRole="Employee" ToRole="User" />
-          <NavigationProperty Name="User1" Relationship="AgentDBModel.FK_Employee_User" FromRole="Employee" ToRole="User" />
+          <Property Name="isDelete" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Queries">
           <Key>
@@ -394,7 +395,6 @@
           <Property Name="role_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Person_User" FromRole="User" ToRole="Employee" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
-          <NavigationProperty Name="Employee1" Relationship="AgentDBModel.FK_Employee_User" FromRole="User" ToRole="Employee" />
         </EntityType>
         <Association Name="FK_Client_Application">
           <End Role="Queries" Type="Self.Queries" Multiplicity="1" />
@@ -552,23 +552,7 @@
             <End Role="Services" EntitySet="Services" />
             <End Role="Tariff" EntitySet="Tariff" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employee_User" Association="AgentDBModel.FK_Employee_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_Employee_User">
-          <End Type="AgentDBModel.User" Role="User" Multiplicity="1" />
-          <End Type="AgentDBModel.Employee" Role="Employee" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -600,6 +584,7 @@
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="AgentDBModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="surname" ColumnName="surname" />
                 <ScalarProperty Name="name" ColumnName="name" />

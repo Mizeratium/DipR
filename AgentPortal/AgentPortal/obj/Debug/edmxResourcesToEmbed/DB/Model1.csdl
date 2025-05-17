@@ -32,10 +32,10 @@
     <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="user_id" Type="Int32" Nullable="false" />
-    <Property Name="image" Type="Binary" MaxLength="50" FixedLength="true" />
+    <Property Name="image" Type="Binary" MaxLength="500" FixedLength="true" />
     <NavigationProperty Name="Queries" Relationship="Self.FK_Application_Person" FromRole="Employee" ToRole="Queries" />
     <NavigationProperty Name="User" Relationship="Self.FK_Person_User" FromRole="Employee" ToRole="User" />
-    <NavigationProperty Name="User1" Relationship="AgentDBModel.FK_Employee_User" FromRole="Employee" ToRole="User" />
+    <Property Name="isDelete" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Queries">
     <Key>
@@ -123,7 +123,6 @@
     <Property Name="role_id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Employee" Relationship="Self.FK_Person_User" FromRole="User" ToRole="Employee" />
     <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
-    <NavigationProperty Name="Employee1" Relationship="AgentDBModel.FK_Employee_User" FromRole="User" ToRole="Employee" />
   </EntityType>
   <Association Name="FK_Client_Application">
     <End Role="Queries" Type="Self.Queries" Multiplicity="1" />
@@ -281,21 +280,5 @@
       <End Role="Services" EntitySet="Services" />
       <End Role="Tariff" EntitySet="Tariff" />
     </AssociationSet>
-    <AssociationSet Name="FK_Employee_User" Association="AgentDBModel.FK_Employee_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="Employee" EntitySet="Employee" />
-    </AssociationSet>
   </EntityContainer>
-  <Association Name="FK_Employee_User">
-    <End Type="AgentDBModel.User" Role="User" Multiplicity="1" />
-    <End Type="AgentDBModel.Employee" Role="Employee" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Employee">
-        <PropertyRef Name="ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

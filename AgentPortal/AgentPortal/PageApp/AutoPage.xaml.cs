@@ -1,4 +1,5 @@
-﻿using AgentPortal.DB;
+﻿using AgentPortal.ClassApp;
+using AgentPortal.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,16 +37,18 @@ namespace AgentPortal.PageApp
                 {
                     if (_sel.role_id == 1)
                     {
+                        CurrentClass.CurrentEmployee = ClassDB.connection.Employee.Where(z => z.user_id == _sel.ID).FirstOrDefault(); //запоминаем пользователя который вошел в систему
                         NavigationService.Navigate(new PageApp.AppListPage()); //Agent
                     }
                     //else if (_sel.role_id == 2)
                     //{
                     //    NavigationService.Navigate(new Pages.PageStudent()); //Boss
                     //}
-                    else
-                    {
-                        MessageBox.Show("Неверный логин или пароль");
-                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Неверный логин или пароль");
                 }
             }
             catch (Exception ex)

@@ -75,6 +75,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClassApp\CurrentClass.cs" />
     <Compile Include="WindowsApp\NewPasswordWindow.xaml.cs">
       <DependentUpon>NewPasswordWindow.xaml</DependentUpon>
     </Compile>
@@ -110,7 +111,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ClassApp\ClassContext.cs" />
     <Compile Include="DB\ClassDB.cs" />
     <Compile Include="DB\Client.cs">
       <DependentUpon>Model1.tt</DependentUpon>

@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AgentPortal.WindowsApp;
+using AgentPortal.ClassApp;
 
 namespace AgentPortal.PageApp
 {
@@ -25,13 +26,20 @@ namespace AgentPortal.PageApp
     public partial class ProfilePage : Page
     {
         public static byte[] _image { get; set; }
-        Employee employee = new Employee();
+        //Employee employee = new Employee();
         public ProfilePage()
         {
             InitializeComponent();
-            this.DataContext = ClassDB.connection.Employee.Where(z => z.ID == ClassApp.ClassContext.CorrEmployee.ID).FirstOrDefault();
+            this.DataContext = ClassDB.connection.Employee.Where(z => z.ID == ClassApp.CurrentClass.CurrentEmployee.user_id).FirstOrDefault();
+
         }
 
+        /// <summary>
+        /// Кнопка выбора и сохранения картинки в профиль, не происходит загрузка картинки в БД и отображение в окне сразу после установки, 
+        /// требуется перейти на другую страницу, чтобы она отобразилась в профиле
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClEventChangePhoto(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
@@ -39,15 +47,18 @@ namespace AgentPortal.PageApp
             {
                 _image = File.ReadAllBytes(dialog.FileName);
             }
-            
+            CurrentClass.CurrentEmployee.image = _image;
+            //ClassDB.connection.SaveChanges(); //ошибка сохранения, строка не работает
         }
 
+        //Смена пароля текущего пользователя
         private void ClEventChangePassword(object sender, RoutedEventArgs e)
         {
             NewPasswordWindow win = new NewPasswordWindow();
             win.Show();
         }
 
+        //Окно мотивации
         private void ClEventShowInfo(object sender, RoutedEventArgs e)
         {
             //В разработке

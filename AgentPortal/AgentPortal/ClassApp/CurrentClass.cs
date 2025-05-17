@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace AgentPortal.ClassApp
 {
-    public class ClassContext
+    public class CurrentClass
     {
-        public static Employee CorrEmployee { get; set; }
+        public static Employee CurrentEmployee { get; set; }
+        public static Queries CurrentAdress { get; set; }
     }
 }

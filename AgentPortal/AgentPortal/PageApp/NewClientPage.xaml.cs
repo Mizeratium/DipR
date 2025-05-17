@@ -1,4 +1,5 @@
-﻿using AgentPortal.DB;
+﻿using AgentPortal.ClassApp;
+using AgentPortal.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AgentPortal.PageApp
 {
@@ -45,6 +47,12 @@ namespace AgentPortal.PageApp
                 txbPhone.Text = "+79";
                 txbPhone.SelectionStart = txbPhone.Text.Length;
             }
+            if (txbPhone.Text.Length > 12)
+            {
+                // Обрезаем текст до 12 символов b gthtvtoftv rehcjh d rjytw cnhjrb
+                txbPhone.Text = txbPhone.Text.Substring(0, 12);
+                txbPhone.CaretIndex = txbPhone.Text.Length;
+            }
         }
 
         // Метод для получения полного номера телефона
@@ -62,6 +70,12 @@ namespace AgentPortal.PageApp
                 client.name = txbName.Text;
                 client.patronymic = txbPatronymic.Text;
                 client.phone = GetPhoneNumber();
+                client.application_id = 1; //Требуется найти ID адреса и заменить единицу на него
+                ClassDB.connection.Client.Add(client);
+                ClassDB.connection.SaveChanges();
+
+                //client.application_id = ClassApp.CurrentClass.CurrentAdress.ID;
+                //client.application_id = ClassDB.connection.Queries.Where(z => z.ID == )
             }
         }
     }

@@ -28,6 +28,5 @@ namespace AgentPortal.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employee { get; set; }
         public virtual Role Role { get; set; }
-        public virtual Employee Employee1 { get; set; }
     }
 }

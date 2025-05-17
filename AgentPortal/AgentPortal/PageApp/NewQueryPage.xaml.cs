@@ -13,7 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AgentPortal.ClassApp;
 using AgentPortal.DB;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AgentPortal.PageApp
 {
@@ -32,6 +34,7 @@ namespace AgentPortal.PageApp
             this.DataContext = this;
         }
 
+        //Создание заявки, переход на страницу с добавлением контрагента
         private void ClEventCreateClient(object sender, RoutedEventArgs e)
         {
             if (txbCity.Text != "" && txbStreet.Text != "" && txbHouse.Text != "") //Проверка на ввод данных
@@ -40,13 +43,26 @@ namespace AgentPortal.PageApp
                 query.city = txbCity.Text;
                 query.street = txbStreet.Text;
                 query.house = int.Parse(txbHouse.Text);
-                if (txbApartment.Text != "" && chkHouse.IsChecked == false) //Есть вписана кв
+                query.tariff_id = (cmbTariff.SelectedItem as Tariff).ID;
+                query.staff_id = (cmbStaff.SelectedItem as Staff).ID;
+                query.employee_id = ClassApp.CurrentClass.CurrentEmployee.user_id; //Заявка фиксируется за конкретным агентом и будет видна только ему
+                query.status_id = 1; //Автоматически задаем статус "Заявка создана"
+                if (txbApartment.Text != "" && chkHouse.IsChecked == false) //Проверка на ввод
                 {
                     query.apartment = int.Parse(txbApartment.Text);
+                    ClassDB.connection.Queries.Add(query);
+                    ClassDB.connection.SaveChanges();
+
+
+                    //query.ID = ClassApp.CurrentClass.CurrentAdress.ID; //Ссылка не указывает на экземпляр объекта!!
+
+
                     NavigationService.Navigate(new PageApp.NewClientPage());
                 }
-                else
+                else //Если это частный дом, сохраняется заявка без квартиры
                 {
+                    ClassDB.connection.Queries.Add(query);
+                    ClassDB.connection.SaveChanges();
                     NavigationService.Navigate(new PageApp.NewClientPage());
                 }
             }

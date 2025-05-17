@@ -30,7 +30,8 @@
     <Property Name="patronymic" Type="varchar" MaxLength="50" />
     <Property Name="phone" Type="varchar" MaxLength="11" Nullable="false" />
     <Property Name="user_id" Type="int" Nullable="false" />
-    <Property Name="image" Type="binary" MaxLength="50" />
+    <Property Name="image" Type="binary" MaxLength="500" />
+    <Property Name="isDelete" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Queries">
     <Key>
@@ -165,15 +166,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Employee_User">
+  <Association Name="FK_Employee_User1">
     <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Employee">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="user_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -245,7 +246,7 @@
       <End Role="Queries" EntitySet="Queries" />
       <End Role="Client" EntitySet="Client" />
     </AssociationSet>
-    <AssociationSet Name="FK_Employee_User" Association="Self.FK_Employee_User">
+    <AssociationSet Name="FK_Employee_User1" Association="Self.FK_Employee_User1">
       <End Role="User" EntitySet="User" />
       <End Role="Employee" EntitySet="Employee" />
     </AssociationSet>
