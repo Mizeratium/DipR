@@ -29,6 +29,7 @@ namespace AgentPortal.DB
         public Nullable<int> staff_id { get; set; }
         public int employee_id { get; set; }
         public Nullable<int> status_id { get; set; }
+        public string comment { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Client> Client { get; set; }

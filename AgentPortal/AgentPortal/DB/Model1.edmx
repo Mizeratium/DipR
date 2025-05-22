@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище AgentDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище AgentDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="ID" />
@@ -50,6 +50,7 @@
           <Property Name="staff_id" Type="int" />
           <Property Name="employee_id" Type="int" Nullable="false" />
           <Property Name="status_id" Type="int" />
+          <Property Name="comment" Type="text" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -267,8 +268,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AgentDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -326,6 +326,7 @@
           <NavigationProperty Name="Staff" Relationship="Self.FK_Application_Router" FromRole="Queries" ToRole="Staff" />
           <NavigationProperty Name="Status" Relationship="Self.FK_Application_Status" FromRole="Queries" ToRole="Status" />
           <NavigationProperty Name="Tariff" Relationship="Self.FK_Application_Tariff" FromRole="Queries" ToRole="Tariff" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -596,6 +597,7 @@
           <EntitySetMapping Name="Queries">
             <EntityTypeMapping TypeName="AgentDBModel.Queries">
               <MappingFragment StoreEntitySet="Queries">
+                <ScalarProperty Name="comment" ColumnName="comment" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="city" ColumnName="city" />
                 <ScalarProperty Name="street" ColumnName="street" />
