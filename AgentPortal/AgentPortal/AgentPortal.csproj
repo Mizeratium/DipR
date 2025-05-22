@@ -136,6 +136,9 @@
     <Compile Include="WindowsApp\EditAgentWindow.xaml.cs">
       <DependentUpon>EditAgentWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowsApp\NewAgentWindow.xaml.cs">
+      <DependentUpon>NewAgentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowsApp\NewPasswordWindow.xaml.cs">
       <DependentUpon>NewPasswordWindow.xaml</DependentUpon>
     </Compile>
@@ -210,6 +213,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="WindowsApp\NewAgentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowsApp\NewPasswordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

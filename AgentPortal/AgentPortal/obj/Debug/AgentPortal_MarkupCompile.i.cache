@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\yamin\Desktop\DipR-master\AgentPortal\AgentPortal\App.xaml
-12-1185623719
+13-2120466586
 2-973498431
-331423657024
+34-1950558829
 211317390404
-PageApp\AdminPage.xaml;PageApp\AgentListPage.xaml;PageApp\AppListPage.xaml;PageApp\AutoPage.xaml;PageApp\NewClientPage.xaml;PageApp\NewQueryPage.xaml;PageApp\ProfilePage.xaml;PageApp\QueryListPage.xaml;PageApp\SaleListPage.xaml;WindowsApp\EditAgentWindow.xaml;WindowsApp\MainWindow.xaml;WindowsApp\NewPasswordWindow.xaml;
+PageApp\AdminPage.xaml;PageApp\AgentListPage.xaml;PageApp\AppListPage.xaml;PageApp\AutoPage.xaml;PageApp\NewClientPage.xaml;PageApp\NewQueryPage.xaml;PageApp\ProfilePage.xaml;PageApp\QueryListPage.xaml;PageApp\SaleListPage.xaml;WindowsApp\EditAgentWindow.xaml;WindowsApp\MainWindow.xaml;WindowsApp\NewAgentWindow.xaml;WindowsApp\NewPasswordWindow.xaml;
 
-False
+True
 

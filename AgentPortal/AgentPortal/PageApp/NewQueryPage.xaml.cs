@@ -54,9 +54,6 @@ namespace AgentPortal.PageApp
                     ClassDB.connection.SaveChanges();
 
 
-                    //query.ID = ClassApp.CurrentClass.CurrentAdress.ID; //Ссылка не указывает на экземпляр объекта!!
-
-
                     NavigationService.Navigate(new PageApp.NewClientPage(query));
                 }
                 else //Если это частный дом, сохраняется заявка без квартиры

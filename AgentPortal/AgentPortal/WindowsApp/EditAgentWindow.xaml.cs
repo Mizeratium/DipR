@@ -21,20 +21,17 @@ namespace AgentPortal.WindowsApp
     /// </summary>
     public partial class EditAgentWindow : Window
     {
-        public int userID;
+        public int userID {  get; set; }
+        public static Employee _employee = new Employee();
         public EditAgentWindow(Employee employee)
         {
             InitializeComponent();
-            //ссылка не указывает на экземпляр объекта
-            //требуется вывести логин и пароль выбранного пользователя
-            //var uaeeri = new List<Employee>(ClassDB.connection.Employee.Where(x=> x.ID == employee.ID)).FirstOrDefault().user_id;
-            //userID=uaeeri;
-            //userID = employee.user_id;
+            userID = employee.user_id;
             txbSurname.Text = employee.surname;
             txbName.Text = employee.name;
             txbPatronymic.Text = employee.patronymic;
             txbPhone.Text = employee.phone;
-            txbLogin.Text = ClassDB.connection.User.Where(z => z.ID == CurrentClass.CurrentEmployee.user_id).FirstOrDefault().login;
+            txbLogin.Text = ClassDB.connection.User.Where(z => z.ID == userID).FirstOrDefault().login;
             txbPassword.Text = ClassDB.connection.User.Where(z => z.ID == userID).FirstOrDefault().password.ToString();
         }
 
@@ -42,12 +39,13 @@ namespace AgentPortal.WindowsApp
         {
             if (txbSurname.Text != "" && txbName.Text != "" && txbPatronymic.Text != "" && txbLogin.Text != "" && txbPassword.Text != "")
             {
-                Employee employee = new Employee();
+
+                Employee employee = ClassDB.connection.Employee.Where(z => z.ID == userID).FirstOrDefault();
                 employee.surname = txbSurname.Text;
                 employee.name = txbName.Text;
                 employee.patronymic = txbPatronymic.Text;
                 employee.phone = txbPhone.Text;
-                User _user = new User();
+                User _user = ClassDB.connection.User.Where(z => z.ID == employee.user_id).FirstOrDefault();
                 _user.login = txbLogin.Text;
                 _user.password = txbPassword.Text;
                 ClassDB.connection.SaveChanges();

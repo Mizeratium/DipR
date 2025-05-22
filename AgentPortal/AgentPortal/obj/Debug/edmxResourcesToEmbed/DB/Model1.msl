@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище AgentDBModelContainer" CdmEntityContainer="AgentDBEntities1">
+  <EntityContainerMapping StorageEntityContainer="Хранилище AgentDBModelContainer" CdmEntityContainer="AgentDBEntities">
     <EntitySetMapping Name="Client">
       <EntityTypeMapping TypeName="AgentDBModel.Client">
         <MappingFragment StoreEntitySet="Client">

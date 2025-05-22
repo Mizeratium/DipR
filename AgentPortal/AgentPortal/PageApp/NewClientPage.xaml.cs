@@ -81,9 +81,6 @@ namespace AgentPortal.PageApp
                 ClassDB.connection.SaveChanges();
                 MessageBox.Show($"Заявка успешно добавлена\nНомер заявки {queryID}");
                 NavigationService.Navigate(new PageApp.NewQueryPage());
-
-                //client.application_id = ClassApp.CurrentClass.CurrentAdress.ID;
-                //client.application_id = ClassDB.connection.Queries.Where(z => z.ID == )
             }
         }
     }

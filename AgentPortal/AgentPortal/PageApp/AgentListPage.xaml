@@ -9,8 +9,16 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <Grid>
-        <StackPanel>
-            <ListView x:Name="AgentList" ItemsSource="{Binding agents}" MouseDoubleClick="AgentList_MouseDoubleClick">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="btnAddAgent" Content="Создать агента" Click="ClEventAddNewAgent" Width="150" Margin="10"/>
+            <Button x:Name="btnDeleteAgent" Content="Удалить" Click="ClEventDeleteAgent" Width="150" Margin="10"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <ListView x:Name="AgentList" ItemsSource="{Binding agents}" SelectionChanged="AgentList_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

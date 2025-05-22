@@ -11,14 +11,14 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="3">
             <DockPanel>
                 <Label Content="АГЕНТ " FontSize="18" FontWeight="DemiBold"/>
-                <Label Content="{Binding ID}" FontSize="18" FontWeight="DemiBold"/>
+                <Label x:Name="lbID" FontSize="18" FontWeight="DemiBold"/>
             </DockPanel>
-            <TextBox x:Name="txbSurname" Text="{Binding surname}" Width="350"/>
-            <TextBox x:Name="txbName" Text="{Binding name}" Width="350"/>
-            <TextBox x:Name="txbPatronymic" Text="{Binding patronymic}" Width="350"/>
-            <TextBox x:Name="txbPhone" Text="{Binding phone}" Width="350"/>
-            <TextBlock x:Name="txbLogin" Text="{Binding user.login}" Width="350"/>
-            <TextBlock x:Name="txbPassword" Text="{Binding user.password}" Width="350"/>
+            <TextBox x:Name="txbSurname" Width="350"/>
+            <TextBox x:Name="txbName" Width="350"/>
+            <TextBox x:Name="txbPatronymic" Width="350"/>
+            <TextBox x:Name="txbPhone" Width="350"/>
+            <TextBox x:Name="txbLogin" Width="350"/>
+            <TextBox x:Name="txbPassword" Width="350"/>
             <DockPanel>
                 <Button Content="Сохранить и выйти" Margin="10" Style="{StaticResource MaterialDesignFlatLightButton}" Click="ClEventSave"/>
                 <Button Content="Выйти" Margin="10" Style="{StaticResource MaterialDesignFlatLightButton}" Click="ClEventGoBack"/>

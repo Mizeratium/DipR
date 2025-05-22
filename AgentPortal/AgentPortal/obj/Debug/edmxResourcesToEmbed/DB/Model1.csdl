@@ -231,7 +231,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="AgentDBEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="AgentDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Client" EntityType="Self.Client" />
     <EntitySet Name="Discounts" EntityType="Self.Discounts" />
     <EntitySet Name="Employee" EntityType="Self.Employee" />
