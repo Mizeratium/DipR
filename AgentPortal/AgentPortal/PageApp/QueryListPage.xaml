@@ -1,0 +1,47 @@
+﻿<Page x:Class="AgentPortal.PageApp.QueryListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AgentPortal.PageApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="8">
+            <TextBox x:Name="txbSearch" TextChanged="txbSearch_TextChanged" materialDesign:HintAssist.Hint="Поиск по номеру заяки" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" FontSize="18" Margin="8"/>
+            <ComboBox x:Name="cmbSort" SelectionChanged="cmbSort_SelectionChanged" materialDesign:HintAssist.Hint="Сортировать по" Style="{StaticResource MaterialDesignComboBox}" FontSize="18" HorizontalAlignment="Right" Width="220" Margin="8" ItemsSource="{Binding statuses}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding title}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <ListView x:Name="QueryList" FontSize="14" ItemsSource="{Binding queries}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding ID}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding city}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding street}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding house}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding apartment}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>

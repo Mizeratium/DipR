@@ -1,0 +1,27 @@
+﻿<Page x:Class="AgentPortal.PageApp.AppListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AgentPortal.PageApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      >
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3.5*"/>
+        </Grid.ColumnDefinitions>
+        <Frame x:Name="NavigateFrame" NavigationUIVisibility="Hidden" Grid.Column="1"/>
+        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+            <Button Content="Новая заявка" Style="{StaticResource MaterialDesignFlatMidBgButton}" Click="ClEventNewQuery" Margin="8"/>
+            <Button Content="Список заявок" Style="{StaticResource MaterialDesignFlatMidBgButton}" Click="ClEventQueryList" Margin="8"/>
+            <Button Content="Профиль" Style="{StaticResource MaterialDesignFlatMidBgButton}" Click="ClEventProfile" Margin="8"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0" VerticalAlignment="Bottom">
+            <Button Content="Выйти" Style="{StaticResource MaterialDesignFlatMidBgButton}" Click="ClEventLogout" Margin="8"/>
+        </StackPanel>
+    </Grid>
+</Page>

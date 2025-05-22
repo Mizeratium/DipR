@@ -1,0 +1,47 @@
+﻿<Page x:Class="AgentPortal.PageApp.NewQueryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AgentPortal.PageApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600" FontSize="18"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      >
+
+    <Grid>
+        <StackPanel>
+            <Label Content="НОВАЯ ЗАЯВКА" HorizontalAlignment="Center"/>
+            <TextBox x:Name="txbCity" materialDesign:HintAssist.Hint="Город" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5"/>
+            <DockPanel>
+                <TextBox x:Name="txbStreet" materialDesign:HintAssist.Hint="Улица" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5" Width="290"/>
+                <TextBox x:Name="txbHouse" materialDesign:HintAssist.Hint="Дом" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBox x:Name="txbApartment" materialDesign:HintAssist.Hint="Квартира" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5" Width="290"/>
+                <CheckBox x:Name="chkHouse" Content="Частный дом" IsThreeState="False"  materialDesign:HintAssist.Hint="Город" Style="{StaticResource MaterialDesignAccentCheckBox}" Margin="5" FontSize="14"/>
+            </DockPanel>
+            <Label Height="10"/>
+            <ComboBox x:Name="cmbTariff" materialDesign:HintAssist.Hint="Тарифный план" Style="{StaticResource MaterialDesignComboBox}" ItemsSource="{Binding tarrifs}" Margin="5">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding title}" FontSize="14"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Height="10"/>
+            <ComboBox x:Name="cmbStaff"  materialDesign:HintAssist.Hint="Оборудование" Style="{StaticResource MaterialDesignComboBox}" ItemsSource="{Binding staffs}" Margin="5">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding title}" FontSize="14"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Content="Далее" Click="ClEventCreateClient" Style="{StaticResource MaterialDesignFlatMidBgButton}" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Page>

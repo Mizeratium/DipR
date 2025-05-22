@@ -1,0 +1,28 @@
+﻿<Window x:Class="AgentPortal.WindowsApp.EditAgentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AgentPortal.WindowsApp"
+        mc:Ignorable="d"
+        Height="450" Width="500"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" FontSize="16">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="3">
+            <DockPanel>
+                <Label Content="АГЕНТ " FontSize="18" FontWeight="DemiBold"/>
+                <Label Content="{Binding ID}" FontSize="18" FontWeight="DemiBold"/>
+            </DockPanel>
+            <TextBox x:Name="txbSurname" Text="{Binding surname}" Width="350"/>
+            <TextBox x:Name="txbName" Text="{Binding name}" Width="350"/>
+            <TextBox x:Name="txbPatronymic" Text="{Binding patronymic}" Width="350"/>
+            <TextBox x:Name="txbPhone" Text="{Binding phone}" Width="350"/>
+            <TextBlock x:Name="txbLogin" Text="{Binding user.login}" Width="350"/>
+            <TextBlock x:Name="txbPassword" Text="{Binding user.password}" Width="350"/>
+            <DockPanel>
+                <Button Content="Сохранить и выйти" Margin="10" Style="{StaticResource MaterialDesignFlatLightButton}" Click="ClEventSave"/>
+                <Button Content="Выйти" Margin="10" Style="{StaticResource MaterialDesignFlatLightButton}" Click="ClEventGoBack"/>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>

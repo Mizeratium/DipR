@@ -1,0 +1,700 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище AgentDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="patronymic" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="application_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Discounts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="months" Type="int" Nullable="false" />
+          <Property Name="discount_price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="patronymic" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Queries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="house" Type="int" Nullable="false" />
+          <Property Name="apartment" Type="int" />
+          <Property Name="tariff_id" Type="int" Nullable="false" />
+          <Property Name="staff_id" Type="int" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
+          <Property Name="status_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cost" Type="int" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tariff">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="service_id" Type="int" Nullable="false" />
+          <Property Name="cost" Type="int" Nullable="false" />
+          <Property Name="discount_id" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Application_Person">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Queries">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Router">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Queries">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Queries">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Tariff">
+          <End Role="Tariff" Type="Self.Tariff" Multiplicity="1" />
+          <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tariff">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Queries">
+              <PropertyRef Name="tariff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Application">
+          <End Role="Queries" Type="Self.Queries" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Queries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="application_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tariff_Discounts">
+          <End Role="Discounts" Type="Self.Discounts" Multiplicity="0..1" />
+          <End Role="Tariff" Type="Self.Tariff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discounts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tariff">
+              <PropertyRef Name="discount_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tariff_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Tariff" Type="Self.Tariff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tariff">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище AgentDBModelContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Discounts" EntityType="Self.Discounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Queries" EntityType="Self.Queries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tariff" EntityType="Self.Tariff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Application_Person" Association="Self.FK_Application_Person">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Queries" EntitySet="Queries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Router" Association="Self.FK_Application_Router">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Queries" EntitySet="Queries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Status" Association="Self.FK_Application_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Queries" EntitySet="Queries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Tariff" Association="Self.FK_Application_Tariff">
+            <End Role="Tariff" EntitySet="Tariff" />
+            <End Role="Queries" EntitySet="Queries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Application" Association="Self.FK_Client_Application">
+            <End Role="Queries" EntitySet="Queries" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_User1" Association="Self.FK_Employee_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tariff_Discounts" Association="Self.FK_Tariff_Discounts">
+            <End Role="Discounts" EntitySet="Discounts" />
+            <End Role="Tariff" EntitySet="Tariff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tariff_Services" Association="Self.FK_Tariff_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Tariff" EntitySet="Tariff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AgentDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="application_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Queries" Relationship="Self.FK_Client_Application" FromRole="Client" ToRole="Queries" />
+        </EntityType>
+        <EntityType Name="Discounts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="months" Type="Int32" Nullable="false" />
+          <Property Name="discount_price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tariff" Relationship="Self.FK_Tariff_Discounts" FromRole="Discounts" ToRole="Tariff" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Queries" Relationship="Self.FK_Application_Person" FromRole="Employee" ToRole="Queries" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Employee_User1" FromRole="Employee" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Queries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="house" Type="Int32" Nullable="false" />
+          <Property Name="apartment" Type="Int32" />
+          <Property Name="tariff_id" Type="Int32" Nullable="false" />
+          <Property Name="staff_id" Type="Int32" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <Property Name="status_id" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Client_Application" FromRole="Queries" ToRole="Client" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Application_Person" FromRole="Queries" ToRole="Employee" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Application_Router" FromRole="Queries" ToRole="Staff" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Application_Status" FromRole="Queries" ToRole="Status" />
+          <NavigationProperty Name="Tariff" Relationship="Self.FK_Application_Tariff" FromRole="Queries" ToRole="Tariff" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tariff" Relationship="Self.FK_Tariff_Services" FromRole="Services" ToRole="Tariff" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cost" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Queries" Relationship="Self.FK_Application_Router" FromRole="Staff" ToRole="Queries" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Queries" Relationship="Self.FK_Application_Status" FromRole="Status" ToRole="Queries" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tariff">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="service_id" Type="Int32" Nullable="false" />
+          <Property Name="cost" Type="Int32" Nullable="false" />
+          <Property Name="discount_id" Type="Int32" />
+          <NavigationProperty Name="Discounts" Relationship="Self.FK_Tariff_Discounts" FromRole="Tariff" ToRole="Discounts" />
+          <NavigationProperty Name="Queries" Relationship="Self.FK_Application_Tariff" FromRole="Tariff" ToRole="Queries" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_Tariff_Services" FromRole="Tariff" ToRole="Services" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_User1" FromRole="User" ToRole="Employee" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Client_Application">
+          <End Role="Queries" Type="Self.Queries" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Queries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="application_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tariff_Discounts">
+          <End Role="Discounts" Type="Self.Discounts" Multiplicity="0..1" />
+          <End Role="Tariff" Type="Self.Tariff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discounts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tariff">
+              <PropertyRef Name="discount_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Person">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Queries">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Router">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Queries">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Queries">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Tariff">
+          <End Role="Tariff" Type="Self.Tariff" Multiplicity="1" />
+          <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tariff">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Queries">
+              <PropertyRef Name="tariff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tariff_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Tariff" Type="Self.Tariff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tariff">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AgentDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Discounts" EntityType="Self.Discounts" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Queries" EntityType="Self.Queries" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Services" EntityType="Self.Services" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tariff" EntityType="Self.Tariff" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Client_Application" Association="Self.FK_Client_Application">
+            <End Role="Queries" EntitySet="Queries" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tariff_Discounts" Association="Self.FK_Tariff_Discounts">
+            <End Role="Discounts" EntitySet="Discounts" />
+            <End Role="Tariff" EntitySet="Tariff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Person" Association="Self.FK_Application_Person">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Queries" EntitySet="Queries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_User1" Association="Self.FK_Employee_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Router" Association="Self.FK_Application_Router">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Queries" EntitySet="Queries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Status" Association="Self.FK_Application_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Queries" EntitySet="Queries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Tariff" Association="Self.FK_Application_Tariff">
+            <End Role="Tariff" EntitySet="Tariff" />
+            <End Role="Queries" EntitySet="Queries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tariff_Services" Association="Self.FK_Tariff_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Tariff" EntitySet="Tariff" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AgentDBModelContainer" CdmEntityContainer="AgentDBEntities">
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="AgentDBModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="application_id" ColumnName="application_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Discounts">
+            <EntityTypeMapping TypeName="AgentDBModel.Discounts">
+              <MappingFragment StoreEntitySet="Discounts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="months" ColumnName="months" />
+                <ScalarProperty Name="discount_price" ColumnName="discount_price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="AgentDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Queries">
+            <EntityTypeMapping TypeName="AgentDBModel.Queries">
+              <MappingFragment StoreEntitySet="Queries">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="house" ColumnName="house" />
+                <ScalarProperty Name="apartment" ColumnName="apartment" />
+                <ScalarProperty Name="tariff_id" ColumnName="tariff_id" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="AgentDBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="AgentDBModel.Services">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="AgentDBModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="AgentDBModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AgentDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tariff">
+            <EntityTypeMapping TypeName="AgentDBModel.Tariff">
+              <MappingFragment StoreEntitySet="Tariff">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="discount_id" ColumnName="discount_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="AgentDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,117 @@
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\bin\Debug\AgentPortal.exe.config
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\bin\Debug\AgentPortal.exe
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\bin\Debug\AgentPortal.pdb
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\obj\Debug\AgentPortal.csproj.AssemblyReference.cache
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\obj\Debug\WindowsApp\MainWindow.g.cs
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\obj\Debug\App.g.cs
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\obj\Debug\AgentPortal_MarkupCompile.cache
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\obj\Debug\AgentPortal_MarkupCompile.lref
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\obj\Debug\WindowsApp\MainWindow.baml
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\obj\Debug\AgentPortal.g.resources
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\obj\Debug\AgentPortal.Properties.Resources.resources
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\obj\Debug\AgentPortal.csproj.GenerateResource.cache
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\obj\Debug\AgentPortal.csproj.CoreCompileInputs.cache
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\obj\Debug\AgentPortal.exe
+C:\Users\yamin\Desktop\AgentPortal\AgentPortal\obj\Debug\AgentPortal.pdb
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\AgentPortal.exe.config
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\AgentPortal.exe
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\AgentPortal.pdb
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\AgentPortal.csproj.AssemblyReference.cache
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\AppListPage.g.cs
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\AutoPage.g.cs
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\WindowsApp\MainWindow.g.cs
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\App.g.cs
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\AgentPortal_MarkupCompile.cache
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\AgentPortal_MarkupCompile.lref
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\AppListPage.baml
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\AutoPage.baml
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\WindowsApp\MainWindow.baml
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\AgentPortal.g.resources
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\AgentPortal.Properties.Resources.resources
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\AgentPortal.csproj.GenerateResource.cache
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\AgentPortal.csproj.CoreCompileInputs.cache
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\AgentPortal.exe
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\AgentPortal.pdb
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\NewQueryPage.g.cs
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\MaterialDesignColors.dll
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\MaterialDesignColors.pdb
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\ProfilePage.g.cs
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\QueryListPage.g.cs
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\App.baml
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\NewQueryPage.baml
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\ProfilePage.baml
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\QueryListPage.baml
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\AgentPortal.csproj.CopyComplete
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\NewClientPage.g.cs
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\NewClientPage.baml
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\EntityFramework.dll
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\EntityFramework.xml
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\AgentPortal_Content.g.cs
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\WindowsApp\NewPasswordWindow.g.cs
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\WindowsApp\NewPasswordWindow.baml
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\AdminPage.g.cs
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\SaleListPage.g.cs
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\AdminPage.baml
+C:\Users\yamin\Desktop\DA\AgentPortal\AgentPortal\obj\Debug\PageApp\SaleListPage.baml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\AgentPortal.exe.config
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\AgentPortal.exe
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\AgentPortal.pdb
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\EntityFramework.dll
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\EntityFramework.SqlServer.dll
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\MaterialDesignColors.dll
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\MaterialDesignThemes.Wpf.dll
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\Microsoft.Xaml.Behaviors.dll
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\EntityFramework.xml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\EntityFramework.SqlServer.xml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\MaterialDesignColors.pdb
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\MaterialDesignThemes.Wpf.pdb
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\MaterialDesignThemes.Wpf.xml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\Microsoft.Xaml.Behaviors.xml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\bin\Debug\ru\EntityFramework.resources.dll
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\AgentPortal.csproj.AssemblyReference.cache
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\AdminPage.g.cs
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\AppListPage.g.cs
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\AutoPage.g.cs
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\NewClientPage.g.cs
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\NewQueryPage.g.cs
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\ProfilePage.g.cs
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\QueryListPage.g.cs
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\SaleListPage.g.cs
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\WindowsApp\MainWindow.g.cs
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\WindowsApp\NewPasswordWindow.g.cs
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\App.g.cs
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\AgentPortal_Content.g.cs
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\AgentPortal_MarkupCompile.cache
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\AgentPortal_MarkupCompile.lref
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\App.baml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\AdminPage.baml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\AppListPage.baml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\AutoPage.baml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\NewClientPage.baml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\NewQueryPage.baml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\ProfilePage.baml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\QueryListPage.baml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\SaleListPage.baml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\WindowsApp\MainWindow.baml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\WindowsApp\NewPasswordWindow.baml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\AgentPortal.g.resources
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\AgentPortal.Properties.Resources.resources
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\AgentPortal.csproj.GenerateResource.cache
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\AgentPortal.csproj.CoreCompileInputs.cache
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\AgentPortal.csproj.CopyComplete
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\AgentPortal.exe
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\AgentPortal.pdb
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\AgentListPage.g.cs
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\AgentListPage.baml
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\WindowsApp\EditAgentWindow.g.cs
+F:\Рабочий стол\DipR-master\DipR-master\AgentPortal\AgentPortal\obj\Debug\WindowsApp\EditAgentWindow.baml

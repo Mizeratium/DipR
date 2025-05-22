@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b95bbb638724d57b5275701246cb3c9" Name="Diagram1">
+        <EntityTypeShape EntityType="AgentDBModel.Client" Width="1.5" PointX="9.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentDBModel.Discounts" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentDBModel.Employee" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentDBModel.Queries" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentDBModel.Role" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentDBModel.Services" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentDBModel.Staff" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentDBModel.Status" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentDBModel.Tariff" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgentDBModel.User" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="AgentDBModel.FK_Client_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentDBModel.FK_Tariff_Discounts" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentDBModel.FK_Application_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentDBModel.FK_Employee_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentDBModel.FK_Application_Router" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentDBModel.FK_Application_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentDBModel.FK_Application_Tariff" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentDBModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentDBModel.FK_Tariff_Services" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
