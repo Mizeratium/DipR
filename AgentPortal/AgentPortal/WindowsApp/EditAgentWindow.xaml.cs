@@ -22,7 +22,6 @@ namespace AgentPortal.WindowsApp
     public partial class EditAgentWindow : Window
     {
         public int userID {  get; set; }
-        public static Employee _employee = new Employee();
         public EditAgentWindow(Employee employee)
         {
             InitializeComponent();

@@ -54,6 +54,7 @@
     <NavigationProperty Name="Staff" Relationship="Self.FK_Application_Router" FromRole="Queries" ToRole="Staff" />
     <NavigationProperty Name="Status" Relationship="Self.FK_Application_Status" FromRole="Queries" ToRole="Status" />
     <NavigationProperty Name="Tariff" Relationship="Self.FK_Application_Tariff" FromRole="Queries" ToRole="Tariff" />
+    <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Role">
     <Key>

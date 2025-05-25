@@ -45,6 +45,7 @@
     <Property Name="staff_id" Type="int" />
     <Property Name="employee_id" Type="int" Nullable="false" />
     <Property Name="status_id" Type="int" />
+    <Property Name="comment" Type="text" />
   </EntityType>
   <EntityType Name="Role">
     <Key>

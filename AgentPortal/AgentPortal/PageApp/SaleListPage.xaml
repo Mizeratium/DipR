@@ -34,19 +34,19 @@
             </ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <ListView x:Name="SaleList" FontSize="14" ItemsSource="{Binding queries}">
+            <ListView x:Name="SaleList" FontSize="14" ItemsSource="{Binding queries}" SelectionChanged="SaleList_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding ID}"/>
-                            <TextBox Text=" "/>
-                            <TextBlock Text="{Binding city}"/>
-                            <TextBox Text=" "/>
-                            <TextBlock Text="{Binding street}"/>
-                            <TextBox Text=" "/>
-                            <TextBlock Text="{Binding house}"/>
-                            <TextBox Text=" "/>
-                            <TextBlock Text="{Binding apartment}"/>
+                            <Label Content="{Binding ID}"/>
+                            <Label Content=" г."/>
+                            <Label Content="{Binding city}"/>
+                            <Label Content=" ул."/>
+                            <Label Content="{Binding street}"/>
+                            <Label Content=" д."/>
+                            <Label Content="{Binding house}"/>
+                            <Label Content=" кв."/>
+                            <Label Content="{Binding apartment}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

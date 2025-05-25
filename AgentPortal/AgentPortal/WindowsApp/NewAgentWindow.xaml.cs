@@ -21,6 +21,7 @@ namespace AgentPortal.WindowsApp
     /// </summary>
     public partial class NewAgentWindow : Window
     {
+        public int newUserID {  get; set; }
         public NewAgentWindow()
         {
             InitializeComponent();
@@ -55,12 +56,17 @@ namespace AgentPortal.WindowsApp
             user.login = txbLogin.Text;
             user.password = txbPassword.Text;
             user.role_id = 1;
+            ClassDB.connection.User.Add(user); //добавление пользователя УСПЕШНО
+            newUserID = user.ID;
+            ClassDB.connection.SaveChanges();
             Employee employee = new Employee();
             employee.surname = txbSurname.Text;
             employee.name = txbName.Text;
             employee.patronymic = txbPatronymic.Text;
             employee.phone = txbPhone.Text;
-            employee.user_id = user.ID;
+            employee.user_id = newUserID; //ошибка здесь!
+            ClassDB.connection.Employee.Add(employee);
+            ClassDB.connection.SaveChanges(); //ошибка при добавлении!
              //добавить картинку по умолчанию
             MessageBox.Show("Агент успешно добавлен");
             this.Close();

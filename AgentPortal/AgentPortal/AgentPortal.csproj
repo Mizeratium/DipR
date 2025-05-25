@@ -136,6 +136,9 @@
     <Compile Include="WindowsApp\EditAgentWindow.xaml.cs">
       <DependentUpon>EditAgentWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowsApp\EditStatusQueryWindow.xaml.cs">
+      <DependentUpon>EditStatusQueryWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowsApp\NewAgentWindow.xaml.cs">
       <DependentUpon>NewAgentWindow.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowsApp\EditAgentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowsApp\EditStatusQueryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

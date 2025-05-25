@@ -1,4 +1,5 @@
 ﻿using AgentPortal.DB;
+using AgentPortal.WindowsApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +48,14 @@ namespace AgentPortal.PageApp
             //поиск по строке
             if (txbSearch.Text != "")
             {
-                SaleList.ItemsSource = ClassDB.connection.Queries.Where(z => z.ID == int.Parse(txbSearch.Text)).ToList();
+                int searchID = int.Parse(txbSearch.Text);
+                SaleList.ItemsSource = ClassDB.connection.Queries.Where(z => z.ID == searchID).ToList();
+                //SaleList.ItemsSource = ClassDB.connection.Queries.Where(z => z.ID == int.Parse(txbSearch.Text)).ToList();
+            }
+            //Обнуление поиска по условиям
+            else
+            {
+                SaleList.ItemsSource = ClassDB.connection.Queries.ToList();
             }
             //фильтрация по агенту
             if (cmbAgent.SelectedItem != null)
@@ -63,10 +71,6 @@ namespace AgentPortal.PageApp
             {
                 SaleList.ItemsSource = ClassDB.connection.Queries.Where(z => z.employee_id == cmbAgent.SelectedIndex + 1 && z.status_id == status.ID).ToList();
             }
-            else
-            {
-                //SaleList.ItemsSource = ClassDB.connection.Queries.ToList();
-            }
         }
 
         private void cmbAgent_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -77,6 +81,14 @@ namespace AgentPortal.PageApp
         private void cmbStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Refresh();
+        }
+
+        //Редактирование существующей заявки
+        private void SaleList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var query = SaleList.SelectedItem as Queries;
+            EditStatusQueryWindow win = new EditStatusQueryWindow(query);
+            win.Show();
         }
     }
 }

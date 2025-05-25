@@ -39,6 +39,7 @@
     <EntitySetMapping Name="Queries">
       <EntityTypeMapping TypeName="AgentDBModel.Queries">
         <MappingFragment StoreEntitySet="Queries">
+          <ScalarProperty Name="comment" ColumnName="comment" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="city" ColumnName="city" />
           <ScalarProperty Name="street" ColumnName="street" />
