@@ -1,6 +1,7 @@
 ﻿using AgentPortal.DB;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -22,6 +23,7 @@ namespace AgentPortal.WindowsApp
     public partial class NewAgentWindow : Window
     {
         public int newUserID {  get; set; }
+        public static List<User> users {  get; set; }
         public NewAgentWindow()
         {
             InitializeComponent();
@@ -57,19 +59,26 @@ namespace AgentPortal.WindowsApp
             user.password = txbPassword.Text;
             user.role_id = 1;
             ClassDB.connection.User.Add(user); //добавление пользователя УСПЕШНО
-            newUserID = user.ID;
             ClassDB.connection.SaveChanges();
-            Employee employee = new Employee();
-            employee.surname = txbSurname.Text;
-            employee.name = txbName.Text;
-            employee.patronymic = txbPatronymic.Text;
-            employee.phone = txbPhone.Text;
-            employee.user_id = newUserID; //ошибка здесь!
-            ClassDB.connection.Employee.Add(employee);
-            ClassDB.connection.SaveChanges(); //ошибка при добавлении!
-             //добавить картинку по умолчанию
-            MessageBox.Show("Агент успешно добавлен");
-            this.Close();
+            users = new List<User>(ClassDB.connection.User.ToList());
+            newUserID = users.Last().ID;
+            //newUserID = ClassDB.connection.User.Last().ID;
+            //newUserID = user.ID;
+
+            if (newUserID != 0)
+            {
+                Employee employee = new Employee();
+                employee.surname = txbSurname.Text.Trim();
+                employee.name = txbName.Text.Trim();
+                employee.patronymic = txbPatronymic.Text.Trim();
+                employee.phone = txbPhone.Text.Trim();
+                employee.user_id = newUserID; //ошибка здесь!
+                ClassDB.connection.Employee.Add(employee);
+                ClassDB.connection.SaveChanges(); //ошибка при добавлении!
+                //добавить картинку по умолчанию
+                MessageBox.Show("Агент успешно добавлен");
+                this.Close();
+            }
         }
 
         private void ClEventGoBack(object sender, RoutedEventArgs e)

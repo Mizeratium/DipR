@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище AgentDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище AgentDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="ID" />
@@ -30,11 +30,11 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="surname" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
           <Property Name="patronymic" Type="varchar" MaxLength="50" />
-          <Property Name="phone" Type="varchar" MaxLength="11" Nullable="false" />
-          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="12" />
+          <Property Name="user_id" Type="int" />
           <Property Name="image" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Queries">
@@ -48,7 +48,7 @@
           <Property Name="apartment" Type="int" />
           <Property Name="tariff_id" Type="int" Nullable="false" />
           <Property Name="staff_id" Type="int" />
-          <Property Name="employee_id" Type="int" Nullable="false" />
+          <Property Name="employee_id" Type="int" />
           <Property Name="status_id" Type="int" />
           <Property Name="comment" Type="text" />
         </EntityType>
@@ -112,7 +112,7 @@
           <Property Name="role_id" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Application_Person">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
@@ -171,8 +171,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employee_User1">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+        <Association Name="FK_Employee_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -251,7 +253,7 @@
             <End Role="Queries" EntitySet="Queries" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employee_User1" Association="Self.FK_Employee_User1">
+          <AssociationSet Name="FK_Employee_User" Association="Self.FK_Employee_User">
             <End Role="User" EntitySet="User" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
@@ -268,7 +270,8 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AgentDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -299,14 +302,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="Int32" />
           <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Queries" Relationship="Self.FK_Application_Person" FromRole="Employee" ToRole="Queries" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Employee_User1" FromRole="Employee" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Employee_User" FromRole="Employee" ToRole="User" />
         </EntityType>
         <EntityType Name="Queries">
           <Key>
@@ -319,14 +322,14 @@
           <Property Name="apartment" Type="Int32" />
           <Property Name="tariff_id" Type="Int32" Nullable="false" />
           <Property Name="staff_id" Type="Int32" />
-          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <Property Name="employee_id" Type="Int32" />
           <Property Name="status_id" Type="Int32" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Client_Application" FromRole="Queries" ToRole="Client" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Application_Person" FromRole="Queries" ToRole="Employee" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Application_Router" FromRole="Queries" ToRole="Staff" />
           <NavigationProperty Name="Status" Relationship="Self.FK_Application_Status" FromRole="Queries" ToRole="Status" />
           <NavigationProperty Name="Tariff" Relationship="Self.FK_Application_Tariff" FromRole="Queries" ToRole="Tariff" />
-          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -393,7 +396,7 @@
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="role_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_User1" FromRole="User" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_User" FromRole="User" ToRole="Employee" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
         <Association Name="FK_Client_Application">
@@ -421,7 +424,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Application_Person">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
@@ -432,8 +435,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employee_User1">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+        <Association Name="FK_Employee_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -528,7 +533,7 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Queries" EntitySet="Queries" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employee_User1" Association="Self.FK_Employee_User1">
+          <AssociationSet Name="FK_Employee_User" Association="Self.FK_Employee_User">
             <End Role="User" EntitySet="User" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
@@ -597,7 +602,6 @@
           <EntitySetMapping Name="Queries">
             <EntityTypeMapping TypeName="AgentDBModel.Queries">
               <MappingFragment StoreEntitySet="Queries">
-                <ScalarProperty Name="comment" ColumnName="comment" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="city" ColumnName="city" />
                 <ScalarProperty Name="street" ColumnName="street" />
@@ -607,6 +611,7 @@
                 <ScalarProperty Name="staff_id" ColumnName="staff_id" />
                 <ScalarProperty Name="employee_id" ColumnName="employee_id" />
                 <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

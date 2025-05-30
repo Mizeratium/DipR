@@ -25,11 +25,11 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="surname" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="surname" Type="varchar" MaxLength="50" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
     <Property Name="patronymic" Type="varchar" MaxLength="50" />
-    <Property Name="phone" Type="varchar" MaxLength="11" Nullable="false" />
-    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="12" />
+    <Property Name="user_id" Type="int" />
     <Property Name="image" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Queries">
@@ -43,7 +43,7 @@
     <Property Name="apartment" Type="int" />
     <Property Name="tariff_id" Type="int" Nullable="false" />
     <Property Name="staff_id" Type="int" />
-    <Property Name="employee_id" Type="int" Nullable="false" />
+    <Property Name="employee_id" Type="int" />
     <Property Name="status_id" Type="int" />
     <Property Name="comment" Type="text" />
   </EntityType>
@@ -107,7 +107,7 @@
     <Property Name="role_id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Application_Person">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
     <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
@@ -166,8 +166,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Employee_User1">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
+  <Association Name="FK_Employee_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
@@ -246,7 +248,7 @@
       <End Role="Queries" EntitySet="Queries" />
       <End Role="Client" EntitySet="Client" />
     </AssociationSet>
-    <AssociationSet Name="FK_Employee_User1" Association="Self.FK_Employee_User1">
+    <AssociationSet Name="FK_Employee_User" Association="Self.FK_Employee_User">
       <End Role="User" EntitySet="User" />
       <End Role="Employee" EntitySet="Employee" />
     </AssociationSet>

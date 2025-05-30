@@ -31,13 +31,6 @@ namespace AgentPortal.PageApp
             AgentList.ItemsSource = ClassDB.connection.Employee.ToList();
         }
 
-        private void AgentList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var employee = AgentList.SelectedItem as Employee;
-            EditAgentWindow win = new EditAgentWindow(employee);
-            win.Show();
-        }
-
         private void ClEventAddNewAgent(object sender, RoutedEventArgs e)
         {
             NewAgentWindow win = new NewAgentWindow();
@@ -47,13 +40,17 @@ namespace AgentPortal.PageApp
         private void ClEventDeleteAgent(object sender, RoutedEventArgs e)
         {
             var _sel = AgentList.SelectedItem as Employee;
-            //реализовать удаление пользователя из бд
-            //ClassDB.connection.User.Remove(ClassDB.connection.Employee.Where(z => z.ID == _sel.ID));
-            ClassDB.connection.User.Remove(ClassDB.connection.User.Where(z => z.ID == _sel.ID).FirstOrDefault()); //должно сработать
-            //удаление работника после удаления его аккаунта
-            ClassDB.connection.Employee.Remove(_sel);
+            ClassDB.connection.User.Remove(ClassDB.connection.User.Where(z => z.ID == _sel.user_id).FirstOrDefault());
             ClassDB.connection.SaveChanges();
             AgentList.ItemsSource = ClassDB.connection.Employee.ToList();
+            NavigationService.Navigate(new PageApp.AgentListPage());
+        }
+
+        private void AgentList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var employee = AgentList.SelectedItem as Employee;
+            EditAgentWindow win = new EditAgentWindow(employee);
+            win.Show();
         }
     }
 }

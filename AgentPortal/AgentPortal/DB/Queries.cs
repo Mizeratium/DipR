@@ -27,7 +27,7 @@ namespace AgentPortal.DB
         public Nullable<int> apartment { get; set; }
         public int tariff_id { get; set; }
         public Nullable<int> staff_id { get; set; }
-        public int employee_id { get; set; }
+        public Nullable<int> employee_id { get; set; }
         public Nullable<int> status_id { get; set; }
         public string comment { get; set; }
     

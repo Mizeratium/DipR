@@ -18,7 +18,7 @@
             <Button x:Name="btnDeleteAgent" Content="Удалить" Click="ClEventDeleteAgent" Width="150" Margin="10"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <ListView x:Name="AgentList" ItemsSource="{Binding agents}" SelectionChanged="AgentList_SelectionChanged">
+            <ListView x:Name="AgentList" ItemsSource="{Binding agents}" MouseDoubleClick="AgentList_MouseDoubleClick">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

@@ -45,7 +45,7 @@ namespace AgentPortal.PageApp
                 query.house = int.Parse(txbHouse.Text);
                 query.tariff_id = (cmbTariff.SelectedItem as Tariff).ID;
                 query.staff_id = (cmbStaff.SelectedItem as Staff).ID;
-                query.employee_id = ClassApp.CurrentClass.CurrentEmployee.user_id; //Заявка фиксируется за конкретным агентом и будет видна только ему
+                query.employee_id = Convert.ToInt32(ClassApp.CurrentClass.CurrentEmployee.user_id); //Заявка фиксируется за конкретным агентом и будет видна только ему
                 query.status_id = 1; //Автоматически задаем статус "Заявка создана"
                 if (txbApartment.Text != "" && chkHouse.IsChecked == false) //Проверка на ввод
                 {

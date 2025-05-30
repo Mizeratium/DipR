@@ -25,7 +25,7 @@ namespace AgentPortal.WindowsApp
         public EditAgentWindow(Employee employee)
         {
             InitializeComponent();
-            userID = employee.user_id;
+            userID = Convert.ToInt32(employee.user_id);
             txbSurname.Text = employee.surname;
             txbName.Text = employee.name;
             txbPatronymic.Text = employee.patronymic;
