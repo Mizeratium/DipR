@@ -28,8 +28,8 @@ namespace AgentPortal.DB
         public Nullable<int> user_id { get; set; }
         public byte[] image { get; set; }
     
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Queries> Queries { get; set; }
-        public virtual User User { get; set; }
     }
 }

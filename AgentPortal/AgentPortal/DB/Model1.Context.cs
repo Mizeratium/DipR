@@ -13,10 +13,10 @@ namespace AgentPortal.DB
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AgentDBEntities : DbContext
+    public partial class AgentDBEntities1 : DbContext
     {
-        public AgentDBEntities()
-            : base("name=AgentDBEntities")
+        public AgentDBEntities1()
+            : base("name=AgentDBEntities1")
         {
         }
     

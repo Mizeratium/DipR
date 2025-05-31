@@ -106,55 +106,7 @@
     <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="role_id" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK_Application_Person">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-    <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Queries">
-        <PropertyRef Name="employee_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Application_Router">
-    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
-    <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Staff">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Queries">
-        <PropertyRef Name="staff_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Application_Status">
-    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
-    <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Status">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Queries">
-        <PropertyRef Name="status_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Application_Tariff">
-    <End Role="Tariff" Type="Self.Tariff" Multiplicity="1" />
-    <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tariff">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Queries">
-        <PropertyRef Name="tariff_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Client_Application">
+  <Association Name="FK_Client_Queries">
     <End Role="Queries" Type="Self.Queries" Multiplicity="1" />
     <End Role="Client" Type="Self.Client" Multiplicity="*" />
     <ReferentialConstraint>
@@ -177,6 +129,54 @@
       </Principal>
       <Dependent Role="Employee">
         <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Queries_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Queries">
+        <PropertyRef Name="employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Queries_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+    <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Queries">
+        <PropertyRef Name="staff_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Queries_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+    <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Queries">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Queries_Tariff">
+    <End Role="Tariff" Type="Self.Tariff" Multiplicity="1" />
+    <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tariff">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Queries">
+        <PropertyRef Name="tariff_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -228,29 +228,29 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tariff" EntityType="Self.Tariff" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Application_Person" Association="Self.FK_Application_Person">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Queries" EntitySet="Queries" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Application_Router" Association="Self.FK_Application_Router">
-      <End Role="Staff" EntitySet="Staff" />
-      <End Role="Queries" EntitySet="Queries" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Application_Status" Association="Self.FK_Application_Status">
-      <End Role="Status" EntitySet="Status" />
-      <End Role="Queries" EntitySet="Queries" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Application_Tariff" Association="Self.FK_Application_Tariff">
-      <End Role="Tariff" EntitySet="Tariff" />
-      <End Role="Queries" EntitySet="Queries" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Client_Application" Association="Self.FK_Client_Application">
+    <AssociationSet Name="FK_Client_Queries" Association="Self.FK_Client_Queries">
       <End Role="Queries" EntitySet="Queries" />
       <End Role="Client" EntitySet="Client" />
     </AssociationSet>
     <AssociationSet Name="FK_Employee_User" Association="Self.FK_Employee_User">
       <End Role="User" EntitySet="User" />
       <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Queries_Employee" Association="Self.FK_Queries_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Queries" EntitySet="Queries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Queries_Staff" Association="Self.FK_Queries_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Queries" EntitySet="Queries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Queries_Status" Association="Self.FK_Queries_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Queries" EntitySet="Queries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Queries_Tariff" Association="Self.FK_Queries_Tariff">
+      <End Role="Tariff" EntitySet="Tariff" />
+      <End Role="Queries" EntitySet="Queries" />
     </AssociationSet>
     <AssociationSet Name="FK_Tariff_Discounts" Association="Self.FK_Tariff_Discounts">
       <End Role="Discounts" EntitySet="Discounts" />

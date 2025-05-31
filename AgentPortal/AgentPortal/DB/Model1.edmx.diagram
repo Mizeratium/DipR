@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ab953203bb09405a9b42407ace135835" Name="Diagram1">
+      <Diagram DiagramId="bc4cb3a92f10411e8c24c8b453684b49" Name="Diagram1">
         <EntityTypeShape EntityType="AgentDBModel.Client" Width="1.5" PointX="9.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AgentDBModel.Discounts" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AgentDBModel.Employee" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
@@ -16,13 +16,13 @@
         <EntityTypeShape EntityType="AgentDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AgentDBModel.Tariff" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="AgentDBModel.User" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
-        <AssociationConnector Association="AgentDBModel.FK_Client_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentDBModel.FK_Client_Queries" ManuallyRouted="false" />
         <AssociationConnector Association="AgentDBModel.FK_Tariff_Discounts" ManuallyRouted="false" />
-        <AssociationConnector Association="AgentDBModel.FK_Application_Person" ManuallyRouted="false" />
         <AssociationConnector Association="AgentDBModel.FK_Employee_User" ManuallyRouted="false" />
-        <AssociationConnector Association="AgentDBModel.FK_Application_Router" ManuallyRouted="false" />
-        <AssociationConnector Association="AgentDBModel.FK_Application_Status" ManuallyRouted="false" />
-        <AssociationConnector Association="AgentDBModel.FK_Application_Tariff" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentDBModel.FK_Queries_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentDBModel.FK_Queries_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentDBModel.FK_Queries_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="AgentDBModel.FK_Queries_Tariff" ManuallyRouted="false" />
         <AssociationConnector Association="AgentDBModel.FK_User_Role" ManuallyRouted="false" />
         <AssociationConnector Association="AgentDBModel.FK_Tariff_Services" ManuallyRouted="false" />
       </Diagram>

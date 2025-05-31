@@ -10,7 +10,7 @@
     <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="application_id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Queries" Relationship="Self.FK_Client_Application" FromRole="Client" ToRole="Queries" />
+    <NavigationProperty Name="Queries" Relationship="Self.FK_Client_Queries" FromRole="Client" ToRole="Queries" />
   </EntityType>
   <EntityType Name="Discounts">
     <Key>
@@ -33,8 +33,8 @@
     <Property Name="phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
     <Property Name="user_id" Type="Int32" />
     <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <NavigationProperty Name="Queries" Relationship="Self.FK_Application_Person" FromRole="Employee" ToRole="Queries" />
     <NavigationProperty Name="User" Relationship="Self.FK_Employee_User" FromRole="Employee" ToRole="User" />
+    <NavigationProperty Name="Queries" Relationship="Self.FK_Queries_Employee" FromRole="Employee" ToRole="Queries" />
   </EntityType>
   <EntityType Name="Queries">
     <Key>
@@ -50,11 +50,11 @@
     <Property Name="employee_id" Type="Int32" />
     <Property Name="status_id" Type="Int32" />
     <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Client" Relationship="Self.FK_Client_Application" FromRole="Queries" ToRole="Client" />
-    <NavigationProperty Name="Employee" Relationship="Self.FK_Application_Person" FromRole="Queries" ToRole="Employee" />
-    <NavigationProperty Name="Staff" Relationship="Self.FK_Application_Router" FromRole="Queries" ToRole="Staff" />
-    <NavigationProperty Name="Status" Relationship="Self.FK_Application_Status" FromRole="Queries" ToRole="Status" />
-    <NavigationProperty Name="Tariff" Relationship="Self.FK_Application_Tariff" FromRole="Queries" ToRole="Tariff" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Client_Queries" FromRole="Queries" ToRole="Client" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Queries_Employee" FromRole="Queries" ToRole="Employee" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK_Queries_Staff" FromRole="Queries" ToRole="Staff" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_Queries_Status" FromRole="Queries" ToRole="Status" />
+    <NavigationProperty Name="Tariff" Relationship="Self.FK_Queries_Tariff" FromRole="Queries" ToRole="Tariff" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -80,7 +80,7 @@
     <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="cost" Type="Int32" Nullable="false" />
     <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Queries" Relationship="Self.FK_Application_Router" FromRole="Staff" ToRole="Queries" />
+    <NavigationProperty Name="Queries" Relationship="Self.FK_Queries_Staff" FromRole="Staff" ToRole="Queries" />
   </EntityType>
   <EntityType Name="Status">
     <Key>
@@ -88,7 +88,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Queries" Relationship="Self.FK_Application_Status" FromRole="Status" ToRole="Queries" />
+    <NavigationProperty Name="Queries" Relationship="Self.FK_Queries_Status" FromRole="Status" ToRole="Queries" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -110,7 +110,7 @@
     <Property Name="cost" Type="Int32" Nullable="false" />
     <Property Name="discount_id" Type="Int32" />
     <NavigationProperty Name="Discounts" Relationship="Self.FK_Tariff_Discounts" FromRole="Tariff" ToRole="Discounts" />
-    <NavigationProperty Name="Queries" Relationship="Self.FK_Application_Tariff" FromRole="Tariff" ToRole="Queries" />
+    <NavigationProperty Name="Queries" Relationship="Self.FK_Queries_Tariff" FromRole="Tariff" ToRole="Queries" />
     <NavigationProperty Name="Services" Relationship="Self.FK_Tariff_Services" FromRole="Tariff" ToRole="Services" />
   </EntityType>
   <EntityType Name="User">
@@ -124,7 +124,7 @@
     <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_User" FromRole="User" ToRole="Employee" />
     <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
   </EntityType>
-  <Association Name="FK_Client_Application">
+  <Association Name="FK_Client_Queries">
     <End Role="Queries" Type="Self.Queries" Multiplicity="1" />
     <End Role="Client" Type="Self.Client" Multiplicity="*" />
     <ReferentialConstraint>
@@ -148,18 +148,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Application_Person">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-    <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Queries">
-        <PropertyRef Name="employee_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Employee_User">
     <End Role="User" Type="Self.User" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -174,7 +162,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Application_Router">
+  <Association Name="FK_Queries_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Queries">
+        <PropertyRef Name="employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Queries_Staff">
     <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
     <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
     <ReferentialConstraint>
@@ -186,7 +186,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Application_Status">
+  <Association Name="FK_Queries_Status">
     <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
     <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
     <ReferentialConstraint>
@@ -198,7 +198,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Application_Tariff">
+  <Association Name="FK_Queries_Tariff">
     <End Role="Tariff" Type="Self.Tariff" Multiplicity="1" />
     <End Role="Queries" Type="Self.Queries" Multiplicity="*" />
     <ReferentialConstraint>
@@ -234,7 +234,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="AgentDBEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="AgentDBEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Client" EntityType="Self.Client" />
     <EntitySet Name="Discounts" EntityType="Self.Discounts" />
     <EntitySet Name="Employee" EntityType="Self.Employee" />
@@ -246,7 +246,7 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Tariff" EntityType="Self.Tariff" />
     <EntitySet Name="User" EntityType="Self.User" />
-    <AssociationSet Name="FK_Client_Application" Association="Self.FK_Client_Application">
+    <AssociationSet Name="FK_Client_Queries" Association="Self.FK_Client_Queries">
       <End Role="Queries" EntitySet="Queries" />
       <End Role="Client" EntitySet="Client" />
     </AssociationSet>
@@ -254,23 +254,23 @@
       <End Role="Discounts" EntitySet="Discounts" />
       <End Role="Tariff" EntitySet="Tariff" />
     </AssociationSet>
-    <AssociationSet Name="FK_Application_Person" Association="Self.FK_Application_Person">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Queries" EntitySet="Queries" />
-    </AssociationSet>
     <AssociationSet Name="FK_Employee_User" Association="Self.FK_Employee_User">
       <End Role="User" EntitySet="User" />
       <End Role="Employee" EntitySet="Employee" />
     </AssociationSet>
-    <AssociationSet Name="FK_Application_Router" Association="Self.FK_Application_Router">
+    <AssociationSet Name="FK_Queries_Employee" Association="Self.FK_Queries_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Queries" EntitySet="Queries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Queries_Staff" Association="Self.FK_Queries_Staff">
       <End Role="Staff" EntitySet="Staff" />
       <End Role="Queries" EntitySet="Queries" />
     </AssociationSet>
-    <AssociationSet Name="FK_Application_Status" Association="Self.FK_Application_Status">
+    <AssociationSet Name="FK_Queries_Status" Association="Self.FK_Queries_Status">
       <End Role="Status" EntitySet="Status" />
       <End Role="Queries" EntitySet="Queries" />
     </AssociationSet>
-    <AssociationSet Name="FK_Application_Tariff" Association="Self.FK_Application_Tariff">
+    <AssociationSet Name="FK_Queries_Tariff" Association="Self.FK_Queries_Tariff">
       <End Role="Tariff" EntitySet="Tariff" />
       <End Role="Queries" EntitySet="Queries" />
     </AssociationSet>

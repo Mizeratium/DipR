@@ -8,6 +8,6 @@ namespace AgentPortal.DB
 {
     public class ClassDB
     {
-        public static AgentDBEntities connection = new AgentDBEntities();
+        public static AgentDBEntities1 connection = new AgentDBEntities1();
     }
 }
