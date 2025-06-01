@@ -28,7 +28,7 @@ namespace AgentPortal.WindowsApp
 
         private void ClEventSavePassword(object sender, RoutedEventArgs e)
         {
-            if (txbOldPasswordOne.Text != null)
+            if (txbOldPasswordOne.Text != "")
             {
                 if (txbOldPasswordOne.Text == ClassDB.connection.User.Where(z => z.ID == CurrentClass.CurrentEmployee.user_id).FirstOrDefault().password)
                 {
@@ -39,7 +39,15 @@ namespace AgentPortal.WindowsApp
                         ClassDB.connection.SaveChanges();
                         this.Close();
                     }
+                    else
+                    {
+                        MessageBox.Show("Введите новый пароль.", "Ошибка сохранения", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Укажите старый пароль.", "Ошибка сохранения", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

@@ -21,13 +21,25 @@ namespace AgentPortal.WindowsApp
     public partial class EditStatusQueryWindow : Window
     {
         public int queryID {  get; set; }
-        public string client {  get; set; }
+        public List<Client> clients {  get; set; }
         public EditStatusQueryWindow(Queries query)
         {
             InitializeComponent();
             queryID = query.ID;
-            //ссылка не указывает на экземпляр объекта
-            //lbClient.Content = ClassDB.connection.Client.Where(z => z.application_id == queryID).FirstOrDefault().surname.ToString();
+            var client = ClassDB.connection.Client.FirstOrDefault(z => z.application_id == queryID);
+            if (client != null)
+            {
+                lbClient.Content = $"{client.surname} {client.name} {client.patronymic}";
+            }
+            else
+            {
+                lbClient.Content = "Клиент не найден";
+            }
+            var comment = ClassDB.connection.Queries.FirstOrDefault(z => z.ID == queryID);
+            if (comment != null)
+            {
+                txbComment.Text = $"{comment.comment}";
+            }
             lbCity.Content = "г. " + query.city + " ул. " + query.street + " д. " + query.house + " кв. " + query.apartment;
         }
 
@@ -35,6 +47,7 @@ namespace AgentPortal.WindowsApp
         {
             Queries query = ClassDB.connection.Queries.Where(z => z.ID == queryID).FirstOrDefault();
             query.comment = txbComment.Text;
+            ClassDB.connection.SaveChanges();
             this.Close();
         }
 

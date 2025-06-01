@@ -30,7 +30,6 @@ namespace AgentPortal.PageApp
         {
             InitializeComponent();
             queryID = query.ID;
-            //newQuery = query;
             // Устанавливаем начальное значение для текстового поля с номером телефона
             txbPhone.Text = "+79";
             txbPhone.SelectionStart = txbPhone.Text.Length;

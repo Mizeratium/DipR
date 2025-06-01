@@ -14,7 +14,7 @@
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <TextBox x:Name="txbSearch" TextChanged="txbSearch_TextChanged" materialDesign:HintAssist.Hint="Поиск по номеру заявки" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="280" FontSize="18" Margin="8"/>
+            <TextBox x:Name="txbSearch" TextChanged="txbSearch_TextChanged" materialDesign:HintAssist.Hint="Поиск по номеру заявки" Style="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Width="280" FontSize="18" Margin="8"/>
             <ComboBox x:Name="cmbAgent" SelectionChanged="cmbAgent_SelectionChanged" materialDesign:HintAssist.Hint="Агент" Style="{StaticResource MaterialDesignComboBox}" FontSize="18" HorizontalAlignment="Right" Width="100" Margin="8" ItemsSource="{Binding agents}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>

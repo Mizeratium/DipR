@@ -45,16 +45,13 @@ namespace AgentPortal.PageApp
                 query.house = int.Parse(txbHouse.Text);
                 query.tariff_id = (cmbTariff.SelectedItem as Tariff).ID;
                 query.staff_id = (cmbStaff.SelectedItem as Staff).ID;
-                //query.employee_id = Convert.ToInt32(ClassApp.CurrentClass.CurrentEmployee.user_id); //Заявка фиксируется за конкретным агентом и будет видна только ему
-                query.employee_id = CurrentClass.CurrentEmployee.user_id; //Заявка фиксируется за конкретным агентом и будет видна только ему
+                query.employee_id = CurrentClass.CurrentEmployee.ID; //Заявка фиксируется за конкретным агентом и будет видна только ему
                 query.status_id = 1; //Автоматически задаем статус "Заявка создана"
                 if (txbApartment.Text != "" && chkHouse.IsChecked == false) //Проверка на ввод
                 {
                     query.apartment = int.Parse(txbApartment.Text);
                     ClassDB.connection.Queries.Add(query);
                     ClassDB.connection.SaveChanges();
-
-
                     NavigationService.Navigate(new PageApp.NewClientPage(query));
                 }
                 else //Если это частный дом, сохраняется заявка без квартиры

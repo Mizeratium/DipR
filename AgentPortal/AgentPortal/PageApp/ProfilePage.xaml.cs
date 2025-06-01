@@ -30,8 +30,7 @@ namespace AgentPortal.PageApp
         public ProfilePage()
         {
             InitializeComponent();
-            this.DataContext = ClassDB.connection.Employee.Where(z => z.ID == ClassApp.CurrentClass.CurrentEmployee.user_id).FirstOrDefault();
-
+            this.DataContext = ClassDB.connection.Employee.Where(z => z.ID == ClassApp.CurrentClass.CurrentEmployee.ID).FirstOrDefault();
         }
 
         /// <summary>
@@ -48,7 +47,7 @@ namespace AgentPortal.PageApp
                 _image = File.ReadAllBytes(dialog.FileName);
             }
             CurrentClass.CurrentEmployee.image = _image;
-            ClassDB.connection.SaveChanges(); //ошибка сохранения, строка не работает
+            ClassDB.connection.SaveChanges();
             NavigationService.Navigate(new PageApp.ProfilePage());
         }
 
@@ -62,7 +61,7 @@ namespace AgentPortal.PageApp
         //Окно мотивации
         private void ClEventShowInfo(object sender, RoutedEventArgs e)
         {
-            //В разработке
+            NavigateFrame.NavigationService.Navigate(new PageApp.MotivationPage());
         }
     }
 }

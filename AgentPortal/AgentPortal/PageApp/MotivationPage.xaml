@@ -1,0 +1,20 @@
+﻿<Page x:Class="AgentPortal.PageApp.MotivationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AgentPortal.PageApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      >
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Уважаемый агент," TextAlignment="Center"/>
+            <TextBlock Text="Напоминаем, что за выполнение плана продаж в установленных объемах вам будет применён коэффициент вознаграждения — 1.2 к окладу." TextWrapping="Wrap" TextAlignment="Justify"/>
+            <TextBlock Text="Уточняйте информацию о доступных тарифах у Вашего супервайзера." TextAlignment="Justify"/>
+            <TextBlock Text="Благодарим за вашу работу и желаем стабильных результатов!" TextAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Page>

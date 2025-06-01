@@ -15,7 +15,7 @@
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="8">
-            <TextBox x:Name="txbSearch" TextChanged="txbSearch_TextChanged" materialDesign:HintAssist.Hint="Поиск по номеру заяки" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" FontSize="18" Margin="8"/>
+            <TextBox x:Name="txbSearch" TextChanged="txbSearch_TextChanged" materialDesign:HintAssist.Hint="Поиск по номеру заяки" Style="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" Width="300" FontSize="18" Margin="8"/>
             <ComboBox x:Name="cmbSort" SelectionChanged="cmbSort_SelectionChanged" materialDesign:HintAssist.Hint="Сортировать по" Style="{StaticResource MaterialDesignComboBox}" FontSize="18" HorizontalAlignment="Right" Width="220" Margin="8" ItemsSource="{Binding statuses}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -38,6 +38,8 @@
                             <TextBlock Text="{Binding house}"/>
                             <TextBlock Text=" "/>
                             <TextBlock Text="{Binding apartment}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding statuses.title}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

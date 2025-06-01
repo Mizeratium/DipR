@@ -172,3 +172,5 @@ C:\Users\yamin\Desktop\DipR-master\AgentPortal\AgentPortal\obj\Debug\WindowsApp\
 C:\Users\yamin\Desktop\DipR-master\AgentPortal\AgentPortal\obj\Debug\WindowsApp\NewAgentWindow.baml
 C:\Users\yamin\Desktop\DipR-master\AgentPortal\AgentPortal\obj\Debug\WindowsApp\EditStatusQueryWindow.g.cs
 C:\Users\yamin\Desktop\DipR-master\AgentPortal\AgentPortal\obj\Debug\WindowsApp\EditStatusQueryWindow.baml
+C:\Users\yamin\Desktop\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\MotivationPage.g.cs
+C:\Users\yamin\Desktop\DipR-master\AgentPortal\AgentPortal\obj\Debug\PageApp\MotivationPage.baml

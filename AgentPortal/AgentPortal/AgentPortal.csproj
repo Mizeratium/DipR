@@ -130,6 +130,9 @@
     <Compile Include="PageApp\AgentListPage.xaml.cs">
       <DependentUpon>AgentListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageApp\MotivationPage.xaml.cs">
+      <DependentUpon>MotivationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageApp\SaleListPage.xaml.cs">
       <DependentUpon>SaleListPage.xaml</DependentUpon>
     </Compile>
@@ -158,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageApp\AutoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageApp\MotivationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

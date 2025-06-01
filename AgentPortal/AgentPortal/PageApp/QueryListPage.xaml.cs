@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AgentPortal.DB;
 using System.Data.Common;
+using AgentPortal.ClassApp;
 
 namespace AgentPortal.PageApp
 {
@@ -28,7 +29,7 @@ namespace AgentPortal.PageApp
         public QueryListPage()
         {
             InitializeComponent();
-            queries = new List<DB.Queries>(ClassDB.connection.Queries.ToList());
+            queries = new List<DB.Queries>(ClassDB.connection.Queries.Where(z => z.employee_id == CurrentClass.CurrentEmployee.ID).ToList());
             statuses = new List<DB.Status>(ClassDB.connection.Status.ToList());
             this.DataContext = this;
         }
@@ -38,14 +39,13 @@ namespace AgentPortal.PageApp
             if (txbSearch.Text != "")
             {
                 int searchID = Convert.ToInt32(txbSearch.Text);
-                QueryList.ItemsSource = ClassDB.connection.Queries.Where(z => z.ID == searchID).ToList();
-
+                QueryList.ItemsSource = ClassDB.connection.Queries.Where(z => z.ID == searchID && z.employee_id == CurrentClass.CurrentEmployee.ID).ToList();
             }
         }
 
         private void cmbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            QueryList.ItemsSource = ClassDB.connection.Queries.Where(z => z.status_id == cmbSort.SelectedIndex + 1).ToList();
+            QueryList.ItemsSource = ClassDB.connection.Queries.Where(z => z.status_id == cmbSort.SelectedIndex + 1 && z.employee_id == CurrentClass.CurrentEmployee.ID).ToList();
         }
     }
 }
