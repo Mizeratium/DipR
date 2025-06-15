@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgentPortal.WindowsApp"
         mc:Ignorable="d"
-        Title="EditStatusQueryWindow" Height="450" Width="500"
+        Height="450" Width="650"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" FontSize="16">
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="3">
@@ -29,10 +29,10 @@
             </DockPanel>
             <StackPanel>
                 <Label Content="Коментарий к заявке"/>
-                <TextBox x:Name="txbComment" Width="400" Height="100" TextWrapping="Wrap" BorderThickness="1"/>
+                <TextBox x:Name="txbComment" Width="600" Height="100" TextWrapping="Wrap" BorderThickness="1"/>
             </StackPanel>
             <DockPanel>
-                <Button Content="Сохранить и выйти" Margin="10" Style="{StaticResource MaterialDesignFlatLightButton}" Click="ClEventSave"/>
+                <Button Content="Сохранить и выйти" Margin="10" Width="300" Style="{StaticResource MaterialDesignFlatLightButton}" Click="ClEventSave"/>
                 <Button Content="Выйти" Margin="10" Style="{StaticResource MaterialDesignFlatLightButton}" Click="ClEventGoBack"/>
             </DockPanel>
         </StackPanel>

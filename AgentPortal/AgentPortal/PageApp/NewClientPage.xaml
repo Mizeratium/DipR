@@ -6,7 +6,6 @@
       xmlns:local="clr-namespace:AgentPortal.PageApp"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600" FontSize="18"
-      Title="NewClientPage"  
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       >
 
