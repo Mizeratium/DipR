@@ -54,30 +54,34 @@ namespace AgentPortal.WindowsApp
 
         private void ClEventAdd(object sender, RoutedEventArgs e)
         {
-            User user = new User();
-            user.login = txbLogin.Text;
-            user.password = txbPassword.Text;
-            user.role_id = 1;
-            ClassDB.connection.User.Add(user); //добавление пользователя УСПЕШНО
-            ClassDB.connection.SaveChanges();
-            users = new List<User>(ClassDB.connection.User.ToList());
-            newUserID = users.Last().ID;
-            //newUserID = ClassDB.connection.User.Last().ID;
-            //newUserID = user.ID;
-
-            if (newUserID != 0)
+            if (txbSurname.Text != "" && txbName.Text != "" && txbPatronymic.Text != "" && txbLogin.Text != "" && txbPassword.Text != "")
             {
-                Employee employee = new Employee();
-                employee.surname = txbSurname.Text.Trim();
-                employee.name = txbName.Text.Trim();
-                employee.patronymic = txbPatronymic.Text.Trim();
-                employee.phone = txbPhone.Text.Trim();
-                employee.user_id = newUserID; //ошибка здесь!
-                ClassDB.connection.Employee.Add(employee);
-                ClassDB.connection.SaveChanges(); //ошибка при добавлении!
-                //добавить картинку по умолчанию
-                MessageBox.Show("Агент успешно добавлен");
-                this.Close();
+                User user = new User();
+                user.login = txbLogin.Text;
+                user.password = txbPassword.Text;
+                user.role_id = 1;
+                ClassDB.connection.User.Add(user); //добавление пользователя УСПЕШНО
+                ClassDB.connection.SaveChanges();
+                users = new List<User>(ClassDB.connection.User.ToList());
+                newUserID = users.Last().ID;
+
+                if (newUserID != 0)
+                {
+                    Employee employee = new Employee();
+                    employee.surname = txbSurname.Text.Trim();
+                    employee.name = txbName.Text.Trim();
+                    employee.patronymic = txbPatronymic.Text.Trim();
+                    employee.phone = txbPhone.Text.Trim();
+                    employee.user_id = newUserID; //ошибка здесь!
+                    ClassDB.connection.Employee.Add(employee);
+                    ClassDB.connection.SaveChanges(); //ошибка при добавлении!
+                    MessageBox.Show("Агент успешно добавлен");
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Заполните обязательные поля.", "Ошибка сохранения", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

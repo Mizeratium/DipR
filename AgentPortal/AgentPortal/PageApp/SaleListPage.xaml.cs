@@ -50,7 +50,6 @@ namespace AgentPortal.PageApp
             {
                 int searchID = int.Parse(txbSearch.Text);
                 SaleList.ItemsSource = ClassDB.connection.Queries.Where(z => z.ID == searchID).ToList();
-                //SaleList.ItemsSource = ClassDB.connection.Queries.Where(z => z.ID == int.Parse(txbSearch.Text)).ToList();
             }
             //Обнуление поиска по условиям
             else
